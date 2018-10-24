@@ -69,12 +69,16 @@ public abstract class NetworkFrame {
 			return qtag >> 16 == 0x8100;
 		}
 		
+		public String formatMAC(byte[] mac) {
+			return String.format("%02x:%02x:%02x:%02x:%02x:%02x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+		}
+		
 		public String formatSourceMAC() {
-			return String.format("%02x:%02x:%02x:%02x:%02x:%02x", srcMAC[0], srcMAC[1], srcMAC[2], srcMAC[3], srcMAC[4], srcMAC[5]);
+			return formatMAC(srcMAC);
 		}
 		
 		public String formatDestinationMAC() {
-			return String.format("%02x:%02x:%02x:%02x:%02x:%02x", srcMAC[0], srcMAC[1], srcMAC[2], srcMAC[3], srcMAC[4], srcMAC[5]);
+			return formatMAC(dstMAC);
 		}
 		
 		@Override
